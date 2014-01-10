@@ -4,7 +4,7 @@
  * Plugin URI: http://wordpress.org/plugins/seamless-sticky-custom-post-types/
  * Description: Extends the native sticky post functionality to custom post types in a way that is identical to default posts.
  * Author: Jascha Ephraim
- * Version: 1.1
+ * Version: 1.2
  * Author URI: http://jaschaephraim.com/
  * License: GPL2
  *
@@ -48,8 +48,10 @@ function sscpt_admin_enqueue_scripts() {
     } else {
         global $wpdb;
 
-        $sticky_posts = implode( ', ', array_map( 'absint', (array) get_option( 'sticky_posts' ) ) );
-        $sticky_count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT( 1 ) FROM $wpdb->posts WHERE post_type = %s AND post_status NOT IN ('trash', 'auto-draft') AND ID IN ($sticky_posts)", $screen->post_type ) );
+        $sticky_posts = implode( ', ', array_map( 'absint', ( array ) get_option( 'sticky_posts' ) ) );
+        $sticky_count = $sticky_posts
+            ? $wpdb->get_var( $wpdb->prepare( "SELECT COUNT( 1 ) FROM $wpdb->posts WHERE post_type = %s AND post_status NOT IN ('trash', 'auto-draft') AND ID IN ($sticky_posts)", $screen->post_type ) )
+            : 0;
 
         $js_vars = array(
             'screen' => 'edit',

@@ -5,7 +5,7 @@ jQuery( function( $ ) {
 
         // Change visibility label if appropriate
         if ( parseInt( sscpt.is_sticky ) )
-            $( '#post-visibility-display' ).text( sscpt.sticky_visibility_text )
+            $( '#post-visibility-display' ).text( sscpt.sticky_visibility_text );
 
         // Add checkbox to visibility form
         $( '#post-visibility-select label[for="visibility-radio-public"]' ).next( 'br' ).after(
@@ -14,7 +14,7 @@ jQuery( function( $ ) {
                 '<label for="sticky" class="selectit">' + sscpt.label_text + '</label>' +
                 '<br />' +
             '</span>'
-        )
+        );
 
 
     // Browsing custom posts
@@ -22,9 +22,9 @@ jQuery( function( $ ) {
 
         // Add "Sticky" filter above post table if appropriate
         if ( parseInt( sscpt.sticky_count ) > 0 ) {
-            var publish_li = $( '.subsubsub > .publish' )
+            var publish_li = $( '.subsubsub > .publish' );
 
-            publish_li.append( ' |' )
+            publish_li.append( ' |' );
             publish_li.after(
                 '<li class="sticky">' +
                     '<a href="edit.php?post_type=' + sscpt.post_type + '&show_sticky=1">' +
@@ -32,7 +32,7 @@ jQuery( function( $ ) {
                     ' <span class="count">(' + sscpt.sticky_count + ')</span>' +
                     '</a>' +
                 '</li>'
-            )
+            );
         }
 
         // Add checkbox to quickedit forms
@@ -41,8 +41,8 @@ jQuery( function( $ ) {
                 '<input type="checkbox" name="sticky" value="sticky" /> ' +
                 '<span class="checkbox-title">' + sscpt.label_text + '</span>' +
             '</label>'
-        )
+        );
 
     }
 
-} )
+} );
